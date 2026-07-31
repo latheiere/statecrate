@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "statecrate"
+version = "0.1.0"
+description = "Back up application files, directories, and live SQLite databases into one archive, check it for corruption, and restore it safely"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+authors = [{name = "StateCrate contributors"}]
+keywords = [
+  "application-data",
+  "archive",
+  "backup",
+  "ed25519",
+  "integrity",
+  "restore",
+  "sqlite",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: System :: Archiving :: Backup",
+  "Typing :: Typed",
+]
+dependencies = [
+  "cryptography>=44",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1,<2",
+  "mypy>=1.15,<2",
+  "pytest>=8,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.11,<1",
+  "twine>=6,<7",
+]
+
+[project.urls]
+Homepage = "https://github.com/latheiere/statecrate"
+Documentation = "https://github.com/latheiere/statecrate#readme"
+Repository = "https://github.com/latheiere/statecrate"
+Issues = "https://github.com/latheiere/statecrate/issues"
+Changelog = "https://github.com/latheiere/statecrate/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+statecrate = ["py.typed"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --strict-config"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["statecrate"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["statecrate"]

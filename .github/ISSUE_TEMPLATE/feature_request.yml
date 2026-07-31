@@ -1,0 +1,23 @@
+name: Feature request
+description: Propose reusable backup or restore behavior
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Use case
+      description: Describe the reusable application-state need and current limitation.
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Suggested behavior
+      description: Include trust, compatibility, and failure-boundary expectations.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

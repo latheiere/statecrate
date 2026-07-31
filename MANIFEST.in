@@ -1,0 +1,6 @@
+include AGENTS.md
+include CHANGELOG.md
+include CONTRIBUTING.md
+include RELEASING.md
+include SECURITY.md
+recursive-include docs *.md

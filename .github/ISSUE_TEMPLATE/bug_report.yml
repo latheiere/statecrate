@@ -1,0 +1,40 @@
+name: Bug report
+description: Report incorrect behavior in a supported StateCrate workflow
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Please use private vulnerability reporting for security issues.
+  - type: input
+    id: version
+    attributes:
+      label: StateCrate version
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Python and POSIX environment
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+      description: Describe the affected source category, operation, trigger, and outcome.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Remove secrets, private keys, and sensitive archive content.
+    validations:
+      required: true
