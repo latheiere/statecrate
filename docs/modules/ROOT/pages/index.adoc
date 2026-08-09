@@ -1,0 +1,13 @@
+= StateCrate
+
+StateCrate is a POSIX Python library for creating, verifying, and restoring
+signed application-state archives. It supports ordinary files, directory
+trees, and consistent online SQLite snapshots.
+
+The public API keeps archive creation and restoration separate from application
+policy. Callers select sources and trusted keys; StateCrate validates the
+complete archive before installing a destination tree.
+
+Use xref:concepts/boundary.adoc[Library boundary] to decide which recovery
+concerns belong in the package. The xref:reference/archive-format.adoc[archive
+format] page describes the versioned compatibility and trust contract.

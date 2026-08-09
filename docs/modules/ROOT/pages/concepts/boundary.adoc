@@ -1,0 +1,25 @@
+= Library boundary
+
+StateCrate owns safe local snapshot staging, signed archive creation, bounded
+validation, extraction safety, and rollback-aware replacement of one complete
+destination tree.
+
+== Included
+
+* Live SQLite snapshots through the SQLite backup API
+* Canonical manifests and Ed25519 signatures
+* Explicit trusted-key verification
+* Complete payload hashes, sizes, and type validation
+* Safe relative paths and bounded extraction
+* Durable archive promotion and destination replacement
+
+== Excluded
+
+* Application source discovery and quiescing beyond SQLite
+* Backup schedules, retention, and remote storage
+* Encryption and secret selection
+* Application-specific metadata policy
+* Incremental or partial restoration
+
+Archives are authenticated but not confidential. A caller that requires
+confidentiality must encrypt the archive through a separate system.

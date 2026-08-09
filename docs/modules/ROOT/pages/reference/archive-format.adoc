@@ -1,0 +1,31 @@
+= Archive format
+
+Format version 1 is a gzip-compressed POSIX tar archive with one canonical
+manifest, one Ed25519 signature document, and a payload tree beneath the
+`statecrate/` archive root.
+
+[source,text]
+----
+statecrate/
+  manifest.json
+  manifest.sig
+  payload/
+----
+
+Every payload file and directory appears exactly once in the signed manifest.
+Readers reject extra, missing, duplicate, unsafe, linked, special, oversized,
+or type-mismatched members before installation. Regular files carry their
+expanded size and SHA-256 digest. SQLite entries also pass integrity checks
+after snapshotting and extraction.
+
+The signature authenticates the exact canonical manifest bytes. Verification
+and restoration require an explicitly trusted public key; an embedded or
+archive-provided key is never trusted automatically.
+
+Restoration recreates only relative paths and ordinary permission bits beneath
+one caller-selected destination. Ownership, timestamps, links, access-control
+lists, extended attributes, and special permission bits are not restored.
+
+Readers reject unsupported format versions rather than inferring
+compatibility. The repository's `docs/ARCHIVE_FORMAT.md` remains the normative
+format document; this page is its portal-oriented summary.
